@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class SnakeLadderUC1 {
+public class SnakeLadder {
 	
 	private final int POSITION = 0;
 	int currentPosition = POSITION;
