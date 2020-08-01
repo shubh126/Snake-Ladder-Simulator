@@ -2,9 +2,11 @@ import java.util.Random;
 
 public class SnakeLadder {
 	
-	private final static int POSITION = 0;
-	static int currentPosition = POSITION;
+	private final static int INITIAL_POSITION = 0;
+	static int currentPosition = INITIAL_POSITION;
 	static int dieNum;
+
+	//rolling a die
 	public static void dieRoll() {
 		Random rand=new Random();
 		 dieNum = rand.nextInt(6) + 1;
@@ -14,23 +16,26 @@ public class SnakeLadder {
 	public static void checkOption() {
 		Random rand=new Random();
 		int option = rand.nextInt(3);
-		System.out.println("Your option is: "+option);
-		int FOR_NO_PLAY = 2;
-		int FOR_LADDER = 0;
-		int FOR_SNAKE = 1;
+		//System.out.println("Your option is: "+option);
 		
 		dieRoll();
-		
 		switch (option) {
-		case 0:
+		case 1:
+			//for Ladder
 			currentPosition += dieNum;
 			break;
-		case 1:
+		case 2:
+			//for Snake
 			currentPosition -= dieNum;
 			break;
-		case 2:
-			currentPosition += 0;
+		default:
+			//for no-play
 			break;
+		}
+		//at initial position snake bite happens position must be 0
+		if (currentPosition < 0)
+		{
+			currentPosition = INITIAL_POSITION;
 		}
 		System.out.println("Current Position: "+currentPosition);
 	}
