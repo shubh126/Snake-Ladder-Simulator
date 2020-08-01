@@ -6,6 +6,7 @@ public class SnakeLadder {
 	private final static int WINNING_POSITION = 100;
 	int currentPosition = INITIAL_POSITION;
 	int dieNum;
+	int roll = 0;
 	
 	//rolling a die
 	public void dieRoll() {
@@ -46,12 +47,19 @@ public class SnakeLadder {
 		{
 			currentPosition = INITIAL_POSITION;
 		}
-		System.out.println("Current Position: "+currentPosition);
+		System.out.println("Player is at: "+currentPosition+" position");
+	}
+	
+	//checking how many times die has been rolled for winning
+	public void dieRollStatus() {
+		checkOption();
+		roll++;
+		System.out.println("Player rolled a die for: "+roll+" times \n_______________________________________");
 	}
 	
 	public void winningPosition() {
 		while (currentPosition < WINNING_POSITION) {
-			checkOption();
+			dieRollStatus();
 		}
 		System.out.println(" !... Player Won ...! ");
 	}
