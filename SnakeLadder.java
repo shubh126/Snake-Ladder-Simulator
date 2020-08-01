@@ -24,10 +24,18 @@ public class SnakeLadder {
 		case 1:
 			//for Ladder
 			currentPosition += dieNum;
+			if (currentPosition > WINNING_POSITION)
+			{
+				currentPosition -= dieNum;
+			}
 			break;
 		case 2:
 			//for Snake
 			currentPosition -= dieNum;
+			if (currentPosition < INITIAL_POSITION)
+			{
+				currentPosition += dieNum;
+			}
 			break;
 		default:
 			//for no-play
@@ -45,6 +53,7 @@ public class SnakeLadder {
 		while (currentPosition < WINNING_POSITION) {
 			checkOption();
 		}
+		System.out.println(" !... Player Won ...! ");
 	}
 
 	public static void main(String[] args) {
