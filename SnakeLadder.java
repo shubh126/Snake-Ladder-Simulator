@@ -3,17 +3,18 @@ import java.util.Random;
 public class SnakeLadder {
 	
 	private final static int INITIAL_POSITION = 0;
-	static int currentPosition = INITIAL_POSITION;
-	static int dieNum;
-
+	private final static int WINNING_POSITION = 100;
+	int currentPosition = INITIAL_POSITION;
+	int dieNum;
+	
 	//rolling a die
-	public static void dieRoll() {
+	public void dieRoll() {
 		Random rand=new Random();
 		 dieNum = rand.nextInt(6) + 1;
 		System.out.println("You Got: "+dieNum);
 	}
 	
-	public static void checkOption() {
+	public void checkOption() {
 		Random rand=new Random();
 		int option = rand.nextInt(3);
 		//System.out.println("Your option is: "+option);
@@ -39,9 +40,16 @@ public class SnakeLadder {
 		}
 		System.out.println("Current Position: "+currentPosition);
 	}
+	
+	public void winningPosition() {
+		while (currentPosition < WINNING_POSITION) {
+			checkOption();
+		}
+	}
 
 	public static void main(String[] args) {
-		checkOption();
+		SnakeLadder a = new SnakeLadder ();
+		a.winningPosition();
 
 	}
 
